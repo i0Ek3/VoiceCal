@@ -26,8 +26,8 @@ A cross-platform voice calculator application that uses AI to understand natural
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd voicecal
+git clone git@github.com:i0Ek3/VoiceCal.git
+cd VoiceCal
 
 # Install dependencies
 flutter pub get
@@ -55,7 +55,7 @@ The app requires API keys for AI services:
 flutter run
 
 # Run on specific platform
-flutter run -d chrome          # Web
+flutter run -d chrome           # Web
 flutter run -d android          # Android
 flutter run -d ios              # iOS (macOS only)
 flutter run -d windows          # Windows

@@ -83,10 +83,11 @@ class TtsService {
   }
   
   // Get available languages
-  Future<List<dynamic>> getLanguages() async {
+  Future<List<String>> getLanguages() async {
     try {
       await initialize();
-      return await _tts.getLanguages();
+      final languages = await _tts.getLanguages;
+      return List<String>.from(languages ?? []);
     } catch (e) {
       print('Error getting languages: $e');
       return [];
@@ -97,8 +98,8 @@ class TtsService {
   Future<bool> isAvailable() async {
     try {
       await initialize();
-      final languages = await _tts.getLanguages();
-      return languages.isNotEmpty;
+      final languages = await _tts.getLanguages;
+      return languages != null && (languages as List).isNotEmpty;
     } catch (e) {
       return false;
     }
