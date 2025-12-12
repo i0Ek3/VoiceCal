@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import '../models/calculation_result.dart';
 import '../utils/api_config.dart';
@@ -48,7 +49,7 @@ class CalculationService {
         );
       }
     } catch (e) {
-      print('Error calculating: $e');
+      debugPrint('Error calculating: $e');
       return CalculationResult.error(
         'Failed to calculate: $e',
         originalText: text,
@@ -109,8 +110,8 @@ Now calculate for the user input above.''';
         success: true,
       );
     } catch (e) {
-      print('Error parsing calculation response: $e');
-      print('Response was: $response');
+      debugPrint('Error parsing calculation response: $e');
+      debugPrint('Response was: $response');
       
       // Fallback: try to extract result from text
       return CalculationResult(

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:record/record.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -52,7 +53,7 @@ class AudioService {
       _isRecording = true;
       return true;
     } catch (e) {
-      print('Error starting recording: $e');
+      debugPrint('Error starting recording: $e');
       _isRecording = false;
       return false;
     }
@@ -75,7 +76,7 @@ class AudioService {
       
       return _currentRecordingPath;
     } catch (e) {
-      print('Error stopping recording: $e');
+      debugPrint('Error stopping recording: $e');
       _isRecording = false;
       return null;
     }
@@ -95,7 +96,7 @@ class AudioService {
         }
       }
     } catch (e) {
-      print('Error canceling recording: $e');
+      debugPrint('Error canceling recording: $e');
     }
   }
   
@@ -113,7 +114,7 @@ class AudioService {
       final estimatedSeconds = bytes / (16000 * 2); // 16kHz, 16-bit
       return Duration(seconds: estimatedSeconds.round());
     } catch (e) {
-      print('Error getting duration: $e');
+      debugPrint('Error getting duration: $e');
       return null;
     }
   }
@@ -126,7 +127,7 @@ class AudioService {
         await file.delete();
       }
     } catch (e) {
-      print('Error deleting recording: $e');
+      debugPrint('Error deleting recording: $e');
     }
   }
   

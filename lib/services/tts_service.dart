@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../utils/api_config.dart';
 
@@ -24,7 +25,7 @@ class TtsService {
       
       _isInitialized = true;
     } catch (e) {
-      print('Error initializing TTS: $e');
+      debugPrint('Error initializing TTS: $e');
     }
   }
   
@@ -43,7 +44,7 @@ class TtsService {
       // Speak
       await _tts.speak(text);
     } catch (e) {
-      print('Error speaking: $e');
+      debugPrint('Error speaking: $e');
     }
   }
   
@@ -52,7 +53,7 @@ class TtsService {
     try {
       await _tts.stop();
     } catch (e) {
-      print('Error stopping TTS: $e');
+      debugPrint('Error stopping TTS: $e');
     }
   }
   
@@ -78,7 +79,7 @@ class TtsService {
       final ttsLanguage = languageMap[languageCode] ?? 'en-US';
       await _tts.setLanguage(ttsLanguage);
     } catch (e) {
-      print('Error setting language: $e');
+      debugPrint('Error setting language: $e');
     }
   }
   
@@ -89,7 +90,7 @@ class TtsService {
       final languages = await _tts.getLanguages;
       return List<String>.from(languages ?? []);
     } catch (e) {
-      print('Error getting languages: $e');
+      debugPrint('Error getting languages: $e');
       return [];
     }
   }
@@ -114,7 +115,7 @@ class TtsService {
       final sentence = 'The result is $result. $explanation';
       await speak(sentence);
     } catch (e) {
-      print('Error speaking result: $e');
+      debugPrint('Error speaking result: $e');
     }
   }
   

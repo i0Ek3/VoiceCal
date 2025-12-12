@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import '../models/calculation_result.dart';
 import '../utils/api_config.dart';
@@ -60,7 +61,7 @@ class SpeechService {
         );
       }
     } catch (e) {
-      print('Error transcribing audio: $e');
+      debugPrint('Error transcribing audio: $e');
       throw Exception('Failed to transcribe audio: $e');
     }
   }
